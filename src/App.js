@@ -5,6 +5,7 @@ import Menu from './components/Menu.js';
 import Home from './pages/Home.js';
 import Alternate from './pages/Alternate.js';
 require('../node_modules/normalize.css/normalize.css');
+
 export default function App () {
     return (
       <Router>
