@@ -1,5 +1,3 @@
-"use strict"
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -24,9 +22,9 @@ class Menu extends React.Component {
 	  	})
 	  }
 	  render() {
-
-	  	let loginClass = (this.state.loginShow)?'':'hide';
 	  	let showDropDownClass = (this.state.showDropDown)?'open':'';
+	  	let homeClass = (window.location.pathname === '/')?'arrow_box':'';
+	  	let altClass = (window.location.pathname === '/Alternate')?'arrow_box':'';
 	    return (
 			<div>
 				<nav>
@@ -39,8 +37,8 @@ class Menu extends React.Component {
 						</div>
 					</div>
 					<div  className={`links  ${showDropDownClass}`}>
-						<Link onClick={() => this.closeDropDown()} to="/">Home</Link>
-						<Link onClick={() => this.closeDropDown()} to="/Alternate">Alternate</Link>
+						<Link onClick={() => this.closeDropDown()} className={homeClass} to="/">Home</Link>
+						<Link onClick={() => this.closeDropDown()} className={altClass} to="/Alternate">Alternate</Link>
 					</div>
 					
 				</nav>

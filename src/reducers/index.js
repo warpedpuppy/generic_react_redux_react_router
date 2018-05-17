@@ -1,5 +1,3 @@
-"use strict"
-
 import {combineReducers} from 'redux';
 import listReducer from "./listReducer";
 import themeReducer from "./themeReducer";

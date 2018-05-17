@@ -1,0 +1,14 @@
+.panel {
+	border:1px solid grey;
+	margin:10px auto;
+	display:inline-block;
+	padding:20px 30px;
+	border-radius: 10px;
+}
+.panel button{
+	border:1px solid grey;
+	margin:10px auto;
+	display:inline-block;
+	padding:20px 30px;
+	border-radius: 10px;
+}

@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import { addItem } from '../actions/index.js';
 import axios from 'axios';
 import {API_BASE_URL} from '../config';
+import StoreDataContainer from '../components/StoreDataContainer';
 
 class Home extends React.Component {
 	constructor(props){
@@ -14,6 +15,9 @@ class Home extends React.Component {
 	}
 	addItemHandler(){
 		this.props.dispatch(addItem(5));
+	}
+
+	getDataFromBackEnd(){
 		let that = this;
 		axios.post(`${API_BASE_URL}`)
 		  .then(function (response) {
@@ -24,19 +28,16 @@ class Home extends React.Component {
 		  .catch(function (error) {
 		    console.log(error);
 		  });
-
-
-
 	}
+
 	componentDidMount () {
 		let that = this;
 		axios.get(`${API_BASE_URL}`)
 		  .then(function (response) {
-		   
 		    that.setState({
 		    	localCounter: response.data.counter
 		    })
-		     console.log(response, that.state);
+		     //console.log(response, that.state);
 		  })
 		  .catch(function (error) {
 		    console.log(error);
@@ -46,11 +47,11 @@ class Home extends React.Component {
 		return (
 			<div>
 		      <h1>home</h1>
-		      <button onClick={(e) => this.addItemHandler()} >click here add item</button>
-		      <div>
-		      array from store:  {this.props.items}
-		      </div>
+		      <StoreDataContainer array={this.props.items} buttonClicked={() => this.addItemHandler()}/>
+		    
+
 		       <div>
+		       <button onClick={(e) => this.getDataFromBackEnd()} >get counter value from back end</button>
 		      back end server counter:  {this.state.localCounter}
 		      </div>
 	      </div>
